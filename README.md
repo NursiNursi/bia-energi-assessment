@@ -36,7 +36,7 @@ Follow these steps:
   npm run json-server
 ```
 
-4. Start the App
+4. Start the App (open in another terminal)
 ```bash
   npm run dev
 ```
