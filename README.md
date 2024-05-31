@@ -2,11 +2,6 @@
 # Bia Energi React Frontend Assignment
 
 
-## Demo
-
-Demo Preview Link: https://bia-energi-assessment.vercel.app/
-
-
 ## Features
 
 - Basic CRUD (Create, Read, Update, Delete) Operation
@@ -45,3 +40,7 @@ Follow these steps:
 ```bash
   npm run dev
 ```
+
+## Demo (run json-server first)
+
+Demo Preview Link: https://bia-energi-assessment.vercel.app/
