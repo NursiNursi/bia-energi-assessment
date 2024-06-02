@@ -11,6 +11,7 @@ export default function DetailComponent({ selecteduser }) {
             placeholder="name"
             name="name"
             value={selecteduser.nama}
+            readOnly
           />
         </Form.Group>
         <Form.Group className="mb-3">
@@ -20,6 +21,7 @@ export default function DetailComponent({ selecteduser }) {
             placeholder="alamat"
             name="alamat"
             value={selecteduser.alamat}
+            readOnly
           />
         </Form.Group>
 
@@ -31,6 +33,7 @@ export default function DetailComponent({ selecteduser }) {
             id="pria"
             name="jenisKelamin"
             value={selecteduser.jenisKelamin}
+            readOnly
           />
         </Form.Group>
 
@@ -40,6 +43,7 @@ export default function DetailComponent({ selecteduser }) {
             type="text"
             name="tanggalLahir"
             value={selecteduser.tanggalLahir}
+            readOnly
           />
         </Form.Group>
       </Form>
