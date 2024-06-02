@@ -1,11 +1,15 @@
 import { useState } from "react";
-import { Button, Col } from "react-bootstrap";
-import ModalComponent from "./ui/ModalComponent";
 import { connect } from "react-redux";
 import { addUser } from "../redux/actions/userActions";
-import NewUserFormComponent from "./ui/NewUserFormComponent";
+
+import { Button, Col } from "react-bootstrap";
 import { AiFillPlusCircle } from "react-icons/ai";
+import ModalComponent from "./ui/ModalComponent";
+import NewUserFormComponent from "./ui/NewUserFormComponent";
 import toast from "react-hot-toast";
+
+import formatDateTimeBorn from "../util/formatDateTimeBorn";
+import formatDateTime from "../util/formatDateTime";
 
 const initialUserData = {
   nama: "",
@@ -24,29 +28,6 @@ const AddUser = ({ userData, addUser }) => {
   };
 
   const confirmAdd = () => {
-    const formatDateTime = (timestamp) => {
-      const formattedDate = new Date(timestamp).toLocaleDateString("in-US", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false,
-      });
-
-      return formattedDate.replace("pukul ", "").replace(".", ":");
-    };
-
-    const formatDateTimeBorn = (timestamp) => {
-      const formattedDate = new Date(timestamp).toLocaleDateString("in-US", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-      });
-
-      return formattedDate;
-    };
-
     fetch(`http://localhost:3000/users`, {
       method: "POST",
       headers: {
