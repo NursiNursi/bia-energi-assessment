@@ -4,12 +4,11 @@ import { addUser } from "../redux/actions/userActions";
 
 import { Button, Col } from "react-bootstrap";
 import { AiFillPlusCircle } from "react-icons/ai";
+
 import ModalComponent from "./ui/ModalComponent";
 import NewUserFormComponent from "./ui/NewUserFormComponent";
-import toast from "react-hot-toast";
 
-import formatDateTimeBorn from "../util/formatDateTimeBorn";
-import formatDateTime from "../util/formatDateTime";
+import { confirmAdd } from "../service/api";
 
 const initialUserData = {
   nama: "",
@@ -25,32 +24,6 @@ const AddUser = ({ userData, addUser }) => {
 
   const handleAdd = () => {
     setShowAddModal(true);
-  };
-
-  const confirmAdd = () => {
-    fetch(`http://localhost:3000/users`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        nama: newUser.nama,
-        alamat: newUser.alamat,
-        jenisKelamin: newUser.jenisKelamin,
-        tanggalLahir: formatDateTimeBorn(newUser.tanggalLahir),
-        tanggalInput: formatDateTime(Date.now()),
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        addUser(data);
-        setShowAddModal(false);
-        setnewUser(initialUserData);
-        toast.success("New user successfully added");
-      })
-      .catch((error) => {
-        console.error("There was a problem with the fetch operation:", error);
-      });
   };
 
   return (
@@ -74,7 +47,15 @@ const AddUser = ({ userData, addUser }) => {
         <ModalComponent
           showModal={showAddModal}
           setShowModal={setShowAddModal}
-          confirmAction={confirmAdd}
+          confirmAction={() =>
+            confirmAdd(
+              newUser,
+              addUser,
+              setShowAddModal,
+              setnewUser,
+              initialUserData
+            )
+          }
           title="Add new user"
           content={
             <NewUserFormComponent newUser={newUser} setnewUser={setnewUser} />
