@@ -11,7 +11,7 @@
 
 ## Tech Stack
 
-**Client:** Vite + React, Redux, Bootstrap
+**Client:** Vite + React, Redux, Bootstrap, React Hot Toast, React Icons
 
 **Server:** json-server
 
